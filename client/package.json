@@ -2,6 +2,7 @@
   "name": "fashion",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -22,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": ".",
+ 
   "eslintConfig": {
     "extends": "react-app"
   },

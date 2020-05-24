@@ -1,17 +1,17 @@
-const express = require('express');
-const fis=require('fs');
-const path=require('path');
-const storeMangerRoutes = require('./Routings/StoreMangerRoutes/StoreMangerRoutes');
-const adminRoutes = require('./Routings/AdminRoutes');
-const commentsRoutes = require('./Routings/CommentsRoutes');
-const wishListRoutes = require('./Routings/WishlistRoutes');
-const registerRoutes = require('./Routings/RegisterRoutes');
-const categoryRoutes = require('./Routings/CategoryRoutes');
-const Parsbdy = require('body-parser');
-const mongoose = require('mongoose');
-const cartRoutes=require('./Routings/CartRoutes');
-const loginRoutes = require('./Routings/LoginRoutes');
-const resetRoutes = require('./Routings/ResetRoutes')
+const express = require("express");
+const fis = require("fs");
+const path = require("path");
+const storeMangerRoutes = require("./Routings/StoreMangerRoutes/StoreMangerRoutes");
+const adminRoutes = require("./Routings/AdminRoutes");
+const commentsRoutes = require("./Routings/CommentsRoutes");
+const wishListRoutes = require("./Routings/WishlistRoutes");
+const registerRoutes = require("./Routings/RegisterRoutes");
+const categoryRoutes = require("./Routings/CategoryRoutes");
+const Parsbdy = require("body-parser");
+const mongoose = require("mongoose");
+const cartRoutes = require("./Routings/CartRoutes");
+const loginRoutes = require("./Routings/LoginRoutes");
+const resetRoutes = require("./Routings/ResetRoutes");
 const app = express();
 const cors = require("cors");
 const morgan = require("morgan");
@@ -21,7 +21,7 @@ require("dotenv").config();
 const port = process.env.PORT || 5000;
 const mongouri = process.env.ATLAS_URI;
 
-app.use('*', express.static(path.join(__dirname, "client", "build")))
+
 
 app.use(cors());
 app.use(function (req, res, next) {
@@ -34,6 +34,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use('/public', express.static(__dirname + '/client/build'));
 
 mongoose
   .connect(mongouri, {
@@ -49,16 +50,21 @@ app.use(morgan("dev"));
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 app.use(Parsbdy.json());
 
-app.use('/admin', adminRoutes);
-app.use('/comment', commentsRoutes);
-app.use('/register', registerRoutes);
-app.use('/reset', resetRoutes);
-app.use('/category', categoryRoutes);
-app.use('/cart', cartRoutes);
-app.use('/wishList', wishListRoutes);
-app.use('/login', loginRoutes);
+app.use("/admin", adminRoutes);
+app.use("/comment", commentsRoutes);
+app.use("/register", registerRoutes);
+app.use("/reset", resetRoutes);
+app.use("/category", categoryRoutes);
+app.use("/cart", cartRoutes);
+app.use("/wishList", wishListRoutes);
+app.use("/login", loginRoutes);
 
 app.use("/storemanger", storeMangerRoutes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+});
+
 
 //custom error handling
 app.use((req, res, next) => {
@@ -71,7 +77,6 @@ app.use((req, res, next) => {
   Er.status = 404;
   next(Er);
 });
-
 
 // app.use(function (erro, rq, res, next) {
 //   res.status(422).send({ error: erro.message });
