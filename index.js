@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/public', express.static(__dirname + '/client/build'));
+app.use('/public', express.static(__dirname + 'client/build'));
 
 mongoose
   .connect(mongouri, {
@@ -62,7 +62,7 @@ app.use("/login", loginRoutes);
 app.use("/storemanger", storeMangerRoutes);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+  res.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
 
 
