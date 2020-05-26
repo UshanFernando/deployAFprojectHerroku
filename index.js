@@ -18,7 +18,7 @@ const morgan = require("morgan");
 
 require("dotenv").config();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const mongouri = process.env.ATLAS_URI;
 
 
@@ -59,7 +59,13 @@ app.use("/login", loginRoutes);
 
 app.use("/storemanger", storeMangerRoutes);
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static( 'client/build' ));
 
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); // relative path
+  });
+}
 
 
 //custom error handling
