@@ -18,7 +18,7 @@ class ProductView extends Component {
             description: "",
             productImage: "",
             products: [],
-            serverAdd: "http://localhost:5000/"
+            serverAdd: "/"
 
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +33,7 @@ class ProductView extends Component {
 
         try {
 
-            const res = await fetch("http://localhost:5000/storemanger/products/" + this.state.id);
+            const res = await fetch("/storemanger/products/" + this.state.id);
             const data = await res.json();
 
             //updateing state with lastest data
@@ -58,11 +58,11 @@ class ProductView extends Component {
 
         if(Auth.isAuthenticated()){
             let userId=Auth.getUserId();
-        const res1 = await fetch("http://localhost:5000/cart/count/" + userId + "/" + this.state.id);
+        const res1 = await fetch("/cart/count/" + userId + "/" + this.state.id);
         const data1 = await res1.json();
         
         if (data1 == 0) {
-            const res = await fetch("http://localhost:5000/storemanger/products/" + this.state.id);
+            const res = await fetch("/storemanger/products/" + this.state.id);
             const data = await res.json();
 
             if (this.state.id != null) {
@@ -77,7 +77,7 @@ class ProductView extends Component {
                         }),
                     };
                     await fetch(
-                        "http://localhost:5000/cart/newCart",
+                        "/cart/newCart",
                         requestOptions
                     );
 
@@ -106,7 +106,7 @@ class ProductView extends Component {
         event.preventDefault();
         if(Auth.isAuthenticated()){
             let userId=Auth.getUserId();
-        const res1 = await fetch("http://localhost:5000/wishList/count/" + userId + "/" + this.state.id);
+        const res1 = await fetch("/wishList/count/" + userId + "/" + this.state.id);
         const data1 = await res1.json();
        
         if (data1 == 0) {
@@ -123,7 +123,7 @@ class ProductView extends Component {
                         }),
                     };
                     await fetch(
-                        "http://localhost:5000/wishList/newWishList",
+                        "/wishList/newWishList",
                         requestOptions
                     );
 

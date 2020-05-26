@@ -41,7 +41,7 @@ class CommentView extends Component {
   }
   async loadComments() {
     try {
-      const res = await fetch("http://localhost:5000/comment/commentz/"+this.state.productId);
+      const res = await fetch("/comment/commentz/"+this.state.productId);
       const data = await res.json();
 
       data.map((comment) => {
@@ -125,7 +125,7 @@ class CommentView extends Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: id }),
       };
-      await fetch("http://localhost:5000/comment/comments", requestOptions);
+      await fetch("/comment/comments", requestOptions);
       alert("Deleted");
       this.loadComments();
     } catch (e) {
@@ -150,7 +150,7 @@ class CommentView extends Component {
           message: cmt[0].message
         }),
       };
-      await fetch("http://localhost:5000/comment/comments", requestOptions);
+      await fetch("/comment/comments", requestOptions);
       alert("Updated");
       this.editComment(cmt[0]._id) ;
 

@@ -71,7 +71,7 @@ class CommentForm extends Component {
                   }),
               };
                await fetch(
-                "http://localhost:5000/comment/newComment",
+                "/comment/newComment",
                 requestOptions
               );
               
