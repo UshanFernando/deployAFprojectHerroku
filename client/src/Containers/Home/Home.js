@@ -32,7 +32,7 @@ class Home extends Component {
   }
   async loadComments() {
     try {
-      const res = await fetch("http://localhost:5000/storemanger/products/");
+      const res = await fetch("storemanger/products/");
       const data = await res.json();
       //updateing state with lastest data
       this.setState({
@@ -47,7 +47,7 @@ class Home extends Component {
 
     if(Auth.isAuthenticated()){
       let userId=Auth.getUserId() ;
-    const res1 = await fetch("http://localhost:5000/wishList/count/" + userId + "/" + id);
+    const res1 = await fetch("wishList/count/" + userId + "/" + id);
     const data1 = await res1.json();
     if (data1 == 0) {
 
@@ -63,7 +63,7 @@ class Home extends Component {
             }),
           };
           await fetch(
-            "http://localhost:5000/wishList/newWishList",
+            "wishList/newWishList",
             requestOptions
           );
           this.setState({
