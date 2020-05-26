@@ -9,7 +9,7 @@ class ProductItem extends Component {
                 <td className="storemantabletd">
                     <div className="media">
                         <div className="d-flex storeimagepdding">
-                            <img src={`http://localhost:5000/${this.props.productImage}`} alt="" />
+                            <img src={`/${this.props.productImage}`} alt="" />
                         </div>
                         <div class="media-body">
                             <p>{this.props.productname}</p>
