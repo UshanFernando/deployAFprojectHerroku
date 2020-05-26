@@ -25,6 +25,6 @@
     "uuid": "^8.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.3"
+    "concurrently": "^3.5.0"
   }
 }
