@@ -18,7 +18,7 @@ const morgan = require("morgan");
 
 require("dotenv").config();
 
-const port = process.env.PORT || 5000;
+const port = 5000;
 const mongouri = process.env.ATLAS_URI;
 
 
