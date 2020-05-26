@@ -38,9 +38,11 @@ class App extends Component {
               <NavBar />
               <Cart />
             </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
+            <PrivateRoute
+              path={["profile"]}
+              component={Profile}
+              role="user"
+            />
             <Route path="/Register">
               <NavBar />
               <Register />
