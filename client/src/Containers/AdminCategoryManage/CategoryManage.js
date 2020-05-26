@@ -136,7 +136,7 @@ export class CategoryManage extends Component {
           },
           body: JSON.stringify({ name: this.state.categoryName }),
         };
-        await fetch("http://localhost:5000/admin/category", requestOptions);
+        await fetch("/admin/category", requestOptions);
         this.loadCategories();
         this.setState({
           categoryName: "",
@@ -155,7 +155,7 @@ export class CategoryManage extends Component {
 
   async loadCategories() {
     try {
-      const res = await fetch("http://localhost:5000/admin/category");
+      const res = await fetch("/admin/category");
       const data = await res.json();
       //updateing state with lastest data
       this.setState({

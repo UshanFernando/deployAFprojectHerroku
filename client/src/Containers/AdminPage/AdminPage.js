@@ -85,7 +85,7 @@ class AdminPage extends Component {
         },
       };
       const res = await fetch(
-        "http://localhost:5000/admin/stats",
+        "/admin/stats",
         requestOptions
       );
       const data = await res.json();

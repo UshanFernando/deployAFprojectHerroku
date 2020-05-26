@@ -17,7 +17,7 @@ class Cart extends Component {
             ship:0,
             shipping:0,
             subtotal: 0.0,
-            serverAdd: "http://localhost:5000/",
+            serverAdd: "/",
             cartProducts: []
         };
 
@@ -35,7 +35,7 @@ class Cart extends Component {
         if(Auth.isAuthenticated()){
         try {
             
-            const res = await fetch("http://localhost:5000/cart/cartz/" + Auth.getUserId());
+            const res = await fetch("/cart/cartz/" + Auth.getUserId());
             const data = await res.json();
             let sub=0;
             data.map((item) => {
@@ -67,7 +67,7 @@ class Cart extends Component {
             headers: { "Content-Type": "application/json","token":Auth.getToken() },
             
           };
-          await fetch("http://localhost:5000/cart/carts/"+id, requestOptions);
+          await fetch("/cart/carts/"+id, requestOptions);
           
           this.loadCartProducts();
         } catch (e) {
@@ -91,7 +91,7 @@ class Cart extends Component {
               quantity: Cart[0].quantity
             }),
           };
-          await fetch("http://localhost:5000/cart/carts", requestOptions);
+          await fetch("/cart/carts", requestOptions);
           alert("Updated");
         
         } catch (e) {

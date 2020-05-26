@@ -53,7 +53,7 @@ class StoreManagerPage extends Component {
 
         let catagories;
         let catagory;
-        axios.get('http://localhost:5000/admin/category')
+        axios.get('/admin/category')
             .then(response => {
                 if (response.data.length > 0) {
                     catagories = response.data;
@@ -189,7 +189,7 @@ class StoreManagerPage extends Component {
 
     LoadList = (categoryname) => {
 
-        axios.get(`http://localhost:5000/storemanger/products/category/${categoryname}`)
+        axios.get(`/storemanger/products/category/${categoryname}`)
             .then(response => {
 
                 this.setState({
@@ -232,11 +232,11 @@ class StoreManagerPage extends Component {
     }
     updateProductsHandler = (id) => {
 
-        axios.get(`http://localhost:5000/storemanger/products/${id}`).then(res => {
+        axios.get(`/storemanger/products/${id}`).then(res => {
 
             // console.log((typeof id)=="string");
             this.setState({
-                Imageurl: `http://localhost:5000/${res.data.productImage}`,
+                Imageurl: `/${res.data.productImage}`,
                 Productname: res.data.productname,
                 Category: res.data.category,
                 Price: res.data.price,
@@ -261,7 +261,7 @@ class StoreManagerPage extends Component {
     DeleteProductsHandler = (id) => {
 
 
-        axios.delete(`http://localhost:5000/storemanger/products/${id}`).then(res => {
+        axios.delete(`/storemanger/products/${id}`).then(res => {
             console.log(res);
             this.setState({
 
@@ -296,7 +296,7 @@ class StoreManagerPage extends Component {
             sinfile.append('productImage', this.state.File);
 
 
-            axios.patch(`http://localhost:5000/storemanger/products/${this.state.updatingproductId}`, sinfile).then(res => {
+            axios.patch(`/storemanger/products/${this.state.updatingproductId}`, sinfile).then(res => {
                 this.setState({
 
                     TableCategoryFilter: res.data.category,
@@ -322,7 +322,7 @@ class StoreManagerPage extends Component {
 
 
 
-            axios.patch(`http://localhost:5000/storemanger/products/${this.state.updatingproductId}`, sinfile).then(res => {
+            axios.patch(`/storemanger/products/${this.state.updatingproductId}`, sinfile).then(res => {
                 this.setState({
 
                     TableCategoryFilter: this.state.Category,
@@ -350,7 +350,7 @@ class StoreManagerPage extends Component {
             sinfile.append('productImage', this.state.File);
 
 
-            axios.post('http://localhost:5000/storemanger/products', sinfile).then(res => {
+            axios.post('/storemanger/products', sinfile).then(res => {
                 this.setState({
 
                     TableCategoryFilter: this.state.Category,

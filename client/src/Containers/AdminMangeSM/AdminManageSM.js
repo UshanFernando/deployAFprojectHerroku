@@ -107,7 +107,7 @@ export class AdminManageSM extends Component {
           }),
         };
         const res = await fetch(
-          "http://localhost:5000/admin/storemanager",
+          "/admin/storemanager",
           requestOptions
         );
         const data = await res.json();
@@ -145,7 +145,7 @@ export class AdminManageSM extends Component {
         headers: { "Content-Type": "application/json", token: Auth.getToken() },
       };
       const res = await fetch(
-        "http://localhost:5000/admin/storemanager",
+        "/admin/storemanager",
         requestOptions
       );
       const data = await res.json();
@@ -165,7 +165,7 @@ export class AdminManageSM extends Component {
         body: JSON.stringify({ id: id }),
         token: Auth.getToken(),
       };
-      await fetch("http://localhost:5000/admin/storemanager", requestOptions);
+      await fetch("/admin/storemanager", requestOptions);
       this.loadStoreManagers();
     } catch (e) {
       console.log(e);
