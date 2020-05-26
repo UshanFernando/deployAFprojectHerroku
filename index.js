@@ -1,4 +1,5 @@
 const express = require("express");
+var serveStatic = require('serve-static')
 const fis = require("fs");
 const path = require("path");
 const storeMangerRoutes = require("./Routings/StoreMangerRoutes/StoreMangerRoutes");
@@ -33,8 +34,10 @@ app.use(function (req, res, next) {
   );
   next();
 });
-
-app.use('/public', express.static(__dirname + 'client/build'));
+app.use(express.static(path.join(__dirname, 'client/build')))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build'))
+})
 
 mongoose
   .connect(mongouri, {
@@ -61,9 +64,7 @@ app.use("/login", loginRoutes);
 
 app.use("/storemanger", storeMangerRoutes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
+
 
 
 //custom error handling

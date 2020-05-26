@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build && npm start",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "client": "cd client && npm start",
-    "server": "nodemon index.js"
+    "server": "cd .. && node index.js"
   },
   "keywords": [],
   "author": "",
