@@ -72,7 +72,7 @@ export class Profile extends Component {
         body: JSON.stringify({ id: Auth.getUserId() }),
       };
       const res = await fetch(
-        "http://localhost:5000/reset/reset",
+        "/reset/reset",
         requestOptions
       );
       const user = await res.json();

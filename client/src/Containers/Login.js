@@ -41,7 +41,7 @@ class Login extends Component {
           }),
         };
         const res = await fetch(
-          "http://localhost:5000/login/login",
+          "/login/login",
           requestOptions
         );
 

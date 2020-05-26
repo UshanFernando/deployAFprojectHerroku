@@ -176,7 +176,7 @@ export class CategoryManage extends Component {
         headers: { "Content-Type": "application/json", token: Auth.getToken() },
         body: JSON.stringify({ id: id }),
       };
-      await fetch("http://localhost:5000/admin/category", requestOptions);
+      await fetch("/admin/category", requestOptions);
       this.loadCategories();
     } catch (e) {
       console.log(e);
@@ -197,7 +197,7 @@ export class CategoryManage extends Component {
             name: this.state.categoryName,
           }),
         };
-        await fetch("http://localhost:5000/admin/category", requestOptions);
+        await fetch("/admin/category", requestOptions);
         this.loadCategories();
         this.setState({
           categoryName: "",

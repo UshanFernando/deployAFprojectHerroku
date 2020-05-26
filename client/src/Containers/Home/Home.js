@@ -18,7 +18,7 @@ class Home extends Component {
     this.state = {
       redirect:false,
       user: "",
-      serverAdd: "http://localhost:5000/",
+      serverAdd: "/",
       products: [],
       qty: 0,
       itemClicked: false,
