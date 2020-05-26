@@ -175,7 +175,7 @@ class ProductView extends Component {
                     <div className="col-lg-6">
                         <div className="owl-carousel owl-theme s_Product_carousel">
                             <div className="single-prd-item">
-                                <img className="img-fluid" src={this.state.serverAdd + this.state.productImage} alt={this.state.serverAdd + this.state.productImage} />
+                                <img className="img-fluid" src={`/${this.state.productImage}`} alt={this.state.serverAdd + this.state.productImage} />
                             </div>
 
                         </div>
