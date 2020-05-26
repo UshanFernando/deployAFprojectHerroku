@@ -100,7 +100,7 @@ export class Profile extends Component {
           lname:this.state.lName
         }),
       };
-      await fetch("http://localhost:5000/reset/register", requestOptions);
+      await fetch("/reset/register", requestOptions);
      this.displayUserDetails();
       
     } catch (e) {
@@ -116,7 +116,7 @@ export class Profile extends Component {
         headers: { "Content-Type": "application/json","token":Auth.getToken() },
         
       };
-      await fetch("http://localhost:5000/register/register/"+this.state.user, requestOptions);
+      await fetch("/register/register/"+this.state.user, requestOptions);
       
       // this.loadCartProducts();
       this.setState({

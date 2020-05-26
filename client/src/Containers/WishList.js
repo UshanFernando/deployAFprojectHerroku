@@ -15,7 +15,7 @@ class WishList extends Component {
         ship:0,
         shipping:0,
         subtotal: 0.0,
-        serverAdd: "http://localhost:5000/",
+        serverAdd: "/",
         wishProducts: []
     };
 }
@@ -28,7 +28,7 @@ async loadCartProducts() {
 
   try {
 
-      const res = await fetch("http://localhost:5000/wishList/wishlists/" + Auth.getUserId());
+      const res = await fetch("/wishList/wishlists/" + Auth.getUserId());
       const data = await res.json();
      
       //updateing state with lastest data
@@ -53,7 +53,7 @@ async deleteWishlist(id) {
       headers: { "Content-Type": "application/json","token":Auth.getToken() },
       
     };
-    await fetch("http://localhost:5000/wishList/wishlists/"+id, requestOptions);
+    await fetch("/wishList/wishlists/"+id, requestOptions);
     
     this.loadCartProducts();
   } catch (e) {

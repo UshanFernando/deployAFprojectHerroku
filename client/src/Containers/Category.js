@@ -9,7 +9,7 @@ class Category extends Component {
         this.state = {
             user:"",
             redirect:false,
-            serverAdd: "http://localhost:5000/",
+            serverAdd: "/",
             categories: [],
             qty:0,
             search:"",
@@ -32,7 +32,7 @@ class Category extends Component {
     }
     async loadCategories() {
         try {
-            const res = await fetch("http://localhost:5000/category/category");
+            const res = await fetch("/category/category");
             const categories = await res.json();
 
             //updateing state with lastest data
@@ -50,7 +50,7 @@ class Category extends Component {
         
         try {
         if(catName!=null){
-            const res = await fetch("http://localhost:5000/category/category/"+catName);
+            const res = await fetch("/category/category/"+catName);
             const products = await res.json();
            
             //updateing state with lastest data
@@ -58,7 +58,7 @@ class Category extends Component {
                 products: products
             });
         }else{
-            const res = await fetch("http://localhost:5000/storemanger/products/");
+            const res = await fetch("/storemanger/products/");
             const products = await res.json();
             //updateing state with lastest data
             this.setState({
@@ -82,7 +82,7 @@ class Category extends Component {
       async handleSubmit(event) {
         event.preventDefault();
         const val = this.state.search;
-        const res = await fetch("http://localhost:5000/category/search/"+val);
+        const res = await fetch("/category/search/"+val);
         const products = await res.json();
           this.setState({
             products: products
@@ -93,7 +93,7 @@ class Category extends Component {
       async handleWishlistSubmit(id) {
      
         if(Auth.isAuthenticated()){
-        const res1 = await fetch("http://localhost:5000/wishList/count/" + this.state.user + "/" + id);
+        const res1 = await fetch("/wishList/count/" + this.state.user + "/" + id);
         const data1 = await res1.json();
         if(data1==0){
         if (this.state.user != null) {
@@ -108,7 +108,7 @@ class Category extends Component {
                     }),
                 };
                 await fetch(
-                    "http://localhost:5000/wishList/newWishList",
+                    "/wishList/newWishList",
                     requestOptions
                 );
 
