@@ -4,6 +4,7 @@ const Category = require("../schema/Category");
 const Register = require("../schema/Register");
 const Product = require("../schema/StoreManagerProducts");
 const auth = require("../Authentication/Auth");
+var sgTransport = require('nodemailer-sendgrid-transport');
 
 require("dotenv").config();
 
@@ -15,8 +16,7 @@ const smtpTransport = require("nodemailer-smtp-transport");
 
 const transport = nodemailer.createTransport(
   smtpTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    service: 'gmail',
     auth: {
       user: mailAccountUser,
       pass: mailAccountPassword,
