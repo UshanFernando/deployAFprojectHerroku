@@ -39,7 +39,7 @@ class App extends Component {
               <Cart />
             </Route>
             <PrivateRoute
-              path={["profile"]}
+              path={"/profile"}
               component={Profile}
               role="user"
             />

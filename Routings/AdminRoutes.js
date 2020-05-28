@@ -15,7 +15,7 @@ const smtpTransport = require("nodemailer-smtp-transport");
 
 const transport = nodemailer.createTransport(
   smtpTransport({
-    service: "gmail",
+    service: "SendinBlue",
     auth: {
       user: mailAccountUser,
       pass: mailAccountPassword,
